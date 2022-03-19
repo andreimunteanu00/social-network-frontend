@@ -1,0 +1,5 @@
+<form [formGroup]="loginForm">
+  <input name="username" id="username" formControlName="username">
+  <input name="password" id="password" formControlName="password">
+  <button class="btn btn-primary" (click)="login()">Login</button>
+</form>
