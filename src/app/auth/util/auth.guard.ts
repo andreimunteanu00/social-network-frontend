@@ -11,7 +11,7 @@ import {JwtHelperService} from "@auth0/angular-jwt";
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
-  canActivate(route: ActivatedRouteSnapshot): boolean {
+  canActivate(): boolean {
     const helper = new JwtHelperService();
     const token = localStorage.getItem("token");
     if (token && !helper.isTokenExpired(token)) {
