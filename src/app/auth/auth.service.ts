@@ -32,10 +32,7 @@ export class AuthService {
   hasRole(role: string): boolean {
     const encodedToken = localStorage.getItem("token");
     const token = this.jwtHelper.decodeToken(encodedToken!);
-    if (token.role === role) {
-      return true;
-    }
-    return false;
+    return token.role === role;
   }
 
 }
