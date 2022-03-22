@@ -9,8 +9,10 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthService} from "./auth/auth.service";
 import { PostComponent } from './post/post.component';
-import {AuthInterceptorService} from "./auth/util/auth.interceptor";
-import {AuthGuard} from "./auth/util/auth.guard";
+import {AuthInterceptorService} from "./util/auth.interceptor";
+import {AuthGuard} from "./util/auth.guard";
+import {JWT_OPTIONS, JwtHelperService} from "@auth0/angular-jwt";
+import {ErrorHandlerInterceptorService} from "./util/errorhandler.interceptor";
 
 @NgModule({
   declarations: [
@@ -19,12 +21,12 @@ import {AuthGuard} from "./auth/util/auth.guard";
     HomeComponent,
     PostComponent
   ],
-    imports: [
-      BrowserModule,
-      AppRoutingModule,
-      ReactiveFormsModule,
-      HttpClientModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
   providers: [
     AuthService,
     {
@@ -32,7 +34,14 @@ import {AuthGuard} from "./auth/util/auth.guard";
       useClass: AuthInterceptorService,
       multi: true
     },
-    AuthGuard
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHandlerInterceptorService,
+      multi: true
+    },
+    AuthGuard,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService
   ],
   bootstrap: [AppComponent]
 })

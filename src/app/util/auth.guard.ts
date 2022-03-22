@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import {ActivatedRouteSnapshot, CanActivate, Router} from "@angular/router";
 
 import { Observable } from "rxjs";
-import {AuthService} from "../auth.service";
+import {AuthService} from "../auth/auth.service";
 import {JwtHelperService} from "@auth0/angular-jwt";
 
 @Injectable({
