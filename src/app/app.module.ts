@@ -13,6 +13,7 @@ import {AuthInterceptorService} from "./util/auth.interceptor";
 import {AuthGuard} from "./util/auth.guard";
 import {JWT_OPTIONS, JwtHelperService} from "@auth0/angular-jwt";
 import {ErrorHandlerInterceptorService} from "./util/errorhandler.interceptor";
+//import { BackgroundimageComponent } from './backgroundimage/backgroundimage.component'; 
 
 @NgModule({
   declarations: [
