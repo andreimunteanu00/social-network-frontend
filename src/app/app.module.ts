@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {NavbarModule, WavesModule, ButtonsModule, IconsModule, MDBRootModule} from 'angular-bootstrap-md'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,20 +14,32 @@ import {AuthInterceptorService} from "./util/auth.interceptor";
 import {AuthGuard} from "./util/auth.guard";
 import {JWT_OPTIONS, JwtHelperService} from "@auth0/angular-jwt";
 import {ErrorHandlerInterceptorService} from "./util/errorhandler.interceptor";
-//import { BackgroundimageComponent } from './backgroundimage/backgroundimage.component'; 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavbarComponent } from './navbar/navbar.component';
+//import { BackgroundimageComponent } from './backgroundimage/backgroundimage.component';
 
 @NgModule({
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA
+  ],
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    PostComponent
+    PostComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    IconsModule,
+    NavbarModule,
+    MDBRootModule,
+    WavesModule
   ],
   providers: [
     AuthService,
