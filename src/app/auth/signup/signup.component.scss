@@ -1,0 +1,22 @@
+.bg-image {
+  background-image: url('../../../assets/images/BackgroundSignup@1xv2.svg');
+  //height: 100vh;
+  background-repeat: repeat-y;
+  //background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+
+  width: 100%;
+  height: auto;
+}
+
+.form-control{
+  border-top: white;
+  border-left: white;
+  border-right: white;
+  //background: #F8F9FA;
+}
+
+.form-control:focus {
+  box-shadow: 0px 0px 0px 5px rgba(0,0,0,0);
+}

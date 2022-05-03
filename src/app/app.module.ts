@@ -16,6 +16,7 @@ import {JWT_OPTIONS, JwtHelperService} from "@auth0/angular-jwt";
 import {ErrorHandlerInterceptorService} from "./util/errorhandler.interceptor";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SignupComponent } from './auth/signup/signup.component';
 //import { BackgroundimageComponent } from './backgroundimage/backgroundimage.component';
 
 @NgModule({
@@ -28,7 +29,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoginComponent,
     HomeComponent,
     PostComponent,
-    NavbarComponent
+    NavbarComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
