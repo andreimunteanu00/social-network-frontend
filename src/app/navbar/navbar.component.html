@@ -3,10 +3,10 @@
     <a href=""><img src="../../assets/images/logo%20alb%201@1xv2.png" margin-left=40% width=70% height=70%></a>
     <form class="form-inline">
       <div class='container'>
-        <button class='btn btn-light'>Log In</button>
+        <button [routerLink]="['login']" class='btn btn-light' (click)="loginClick()">Login</button>
         <div class="space">
         </div>
-        <button type="button" class="btn btn-danger">Sign Up</button>
+        <button type="button" class="btn btn-danger" (click)="signupClick()">Sign Up</button>
       </div>
     </form>
   </nav>

@@ -1,0 +1,29 @@
+.bg-image {
+  background-image: url('../../../assets/images/BackgroundLogin@1xv2.svg');
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.form-control{
+  border-top: white;
+  border-left: white;
+  border-right: white;
+  //background: #F8F9FA;
+}
+
+.form-control:focus {
+  box-shadow: 0px 0px 0px 5px rgba(0,0,0,0);
+}
+
+.button{
+  background:    #bd4b4b;
+  border-radius: 11px;
+  box-shadow:    0.5px 0.5px lightcoral;
+  padding:       10px 38px;
+  color:         #ffffff;
+  display:       inline-block;
+  font:          normal bold 18px/1 "Open Sans", sans-serif;
+  text-align:    center;
+}

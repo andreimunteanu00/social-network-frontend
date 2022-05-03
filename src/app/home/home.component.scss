@@ -1,8 +1,19 @@
 .bg-image {
-    background-image: url('../../assets/images/HomeDesktop@1x.png');
+    background-image: url('../../assets/images/HomeDesktop@1bun.svg');
     height: 100vh;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
+}
+
+.card__overlay {
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  transition: .5s ease;
+  background: #eeeeee;
+  border-bottom: #eeeeee;
+  border-right: #eeeeee;
+  box-shadow: none;
 }
 
