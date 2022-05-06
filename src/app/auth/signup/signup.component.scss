@@ -1,6 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .bg-image {
   background-image: url('../../../assets/images/BackgroundSignup@1xv2.svg');
-  //height: 100vh;
+  height: 100vh;
   background-repeat: repeat-y;
   //background-attachment: fixed;
   background-position: center;

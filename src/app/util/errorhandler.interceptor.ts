@@ -24,6 +24,13 @@ export class ErrorHandlerInterceptorService implements HttpInterceptor {
           Swal.fire({
             title: err.error
           })
+        } else if (err.status === 500) {
+          Swal.fire({
+            title: 'Internal Server Error',
+            icon: "error",
+            showConfirmButton: false,
+            timer: 3000
+          })
         }
     })
     )

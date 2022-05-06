@@ -5,6 +5,7 @@ import {BehaviorSubject} from "rxjs";
 import {Router} from "@angular/router";
 import * as jwt_decode from "jwt-decode";
 import {JwtHelperService} from "@auth0/angular-jwt";
+import {IUser} from "../util/model/user.mode";
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,8 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router, private jwtHelper: JwtHelperService) {}
 
-  login(username: string, password: string) {
-    return this.http.post(this.resourceUrl + "/login", { username, password }, { observe: "response" })
+  login(user: IUser) {
+    return this.http.post(this.resourceUrl + "/login", user, { observe: "response" })
       .pipe(
         // @ts-ignore
         first(),
@@ -27,6 +28,10 @@ export class AuthService {
           this.router.navigate(["post"]);
         })
       );
+  }
+
+  register(user: IUser) {
+    return this.http.post(this.resourceUrl + "/register", user, { observe: "response" });
   }
 
   hasRole(role: string): boolean {

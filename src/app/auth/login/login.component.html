@@ -11,22 +11,31 @@
 <h1>
 <br>
 <br>
-<form [formGroup]="loginForm" class="text-center p-5 w-50">
+<form class="text-center p-5 w-50">
   <div class="card bg-white mb-3" style="max-width: 48rem;">
     <div class="card-header p-3 mb-2 bg-danger text-white"></div>
     <div class="card-body">
 
       <h3 class="card-title">Welcome Back!</h3>
       <h6 class="card-title">Login to your account</h6>
-      <p class="card-text">
+      <form [formGroup]="loginForm" class="card-text">
         <!-- Email -->
-        <input type="email" id="defaultLoginFormEmail" class="form-control mb-4 w-100" placeholder="E-mail">
+        <input
+          formControlName="email"
+          type="email"
+          id="defaultLoginFormEmail"
+          class="form-control mb-4 w-100"
+          placeholder="E-mail">
         <!-- Password -->
-        <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
-
+        <input
+          formControlName="password"
+          type="password"
+          id="defaultLoginFormPassword"
+          class="form-control mb-4"
+          placeholder="Password">
         <div id="formFooter">
           <h6 class="text-left p-2">
-            <a class="underlineHover" href="#">Forgot Password?</a>
+            <a class="underlineHover">Forgot Password?</a>
           </h6>
         </div>
 
@@ -34,8 +43,9 @@
         <br>
         <br>
         <h6>Not a member?
-          <a href="">Sign Up</a> here
+          <a [routerLink]="['/signup']">Sign Up</a> here
         </h6>
+      </form>
     </div>
   </div>
 </form>

@@ -10,7 +10,7 @@ import {AuthService} from "../auth.service";
 export class LoginComponent implements OnInit {
 
   loginForm = this.fb.group({
-    username: [],
+    email: [],
     password: []
   })
 
@@ -20,9 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    const username = this.loginForm.get(['username'])!.value;
-    const password = this.loginForm.get(['password'])!.value;
-    this.loginService.login(username, password).subscribe(res => {
+    this.loginService.login(this.loginForm.value!).subscribe(res => {
       console.log(res);
     })
   }

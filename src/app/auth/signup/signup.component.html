@@ -17,18 +17,43 @@
 
           <h3 class="card-title">It’s nice to meet you!</h3>
           <h6 class="card-title">Create your account now</h6>
-          <p class="card-text">
+          <form [formGroup]='registerForm' class="card-text">
             <!-- Username-->
-            <input type="username" id="defaultLoginFormUsername" class="form-control mb-4 w-100" placeholder="Username">
+            <input
+              formControlName="username"
+              type="text"
+              id="defaultLoginFormUsername"
+              class="form-control mb-4 w-100"
+              placeholder="Username">
             <!-- Email -->
-            <input type="email" id="defaultLoginFormEmail" class="form-control mb-4 w-100" placeholder="E-mail">
+            <input
+              formControlName="email"
+              type="email"
+              id="defaultLoginFormEmail"
+              class="form-control mb-4 w-100"
+              placeholder="E-mail">
             <!-- University -->
-            <input type="university" id="defaultLoginFormUniversity" class="form-control mb-4 w-100" placeholder="University">
+            <input
+              formControlName="university"
+              type="text"
+              id="defaultLoginFormUniversity"
+              class="form-control mb-4 w-100"
+              placeholder="University">
             <!-- Password -->
-            <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+            <input
+              formControlName="password"
+              type="password"
+              id="defaultLoginFormPassword"
+              class="form-control mb-4"
+              placeholder="Password">
             <!-- Confirm Password -->
-            <input type="password" id="defaultLoginFormPasswordConfirm" class="form-control mb-4" placeholder="Confirm password">
-
+            <input
+              formControlName="confirmPassword"
+              type="password"
+              id="defaultLoginFormPasswordConfirm"
+              class="form-control mb-4"
+              placeholder="Confirm password">
+          </form>
           <div id="formFooter">
             <h6 class="text-left p-2">
               <div class="form-check">
@@ -39,7 +64,7 @@
               </div>
             </h6>
           </div>
-          <button type="button" class="btn btn-danger">Sign Up</button>
+          <button type="button" class="btn btn-danger" (click)="register()">Sign Up</button>
         </div>
       </div>
     </form>

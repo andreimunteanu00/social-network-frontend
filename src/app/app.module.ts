@@ -15,7 +15,7 @@ import {AuthGuard} from "./util/auth.guard";
 import {JWT_OPTIONS, JwtHelperService} from "@auth0/angular-jwt";
 import {ErrorHandlerInterceptorService} from "./util/errorhandler.interceptor";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './util/navbar/navbar.component';
 import { SignupComponent } from './auth/signup/signup.component';
 //import { BackgroundimageComponent } from './backgroundimage/backgroundimage.component';
 
