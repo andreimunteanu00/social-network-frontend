@@ -1,9 +1,16 @@
-.space {
-  width: 10px;
-  height: auto;
-  display: inline-block;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.nav{
-  padding: 5%;
+.navbar-img {
+  margin-left: 2rem;
+  padding: 0.5rem 0;
+}
+
+.btn {
+  display: inline;
+  margin: 0.3rem;
+  padding: 0.15rem 0.5rem;
 }

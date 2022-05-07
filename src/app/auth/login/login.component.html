@@ -1,56 +1,43 @@
-<app-navbar></app-navbar>
+<div class="login">
+  <form class="form text-center p-5 w-50">
+    <div class="card bg-white mb-3">
+      <div class="card-header p-3 mb-2 bg-danger text-white"></div>
+      <div class="card-body">
+        <h3 class="card-title">Welcome Back!</h3>
+        <h6 class="card-title">Login to your account</h6>
+        <form [formGroup]="loginForm" class="card-text">
+          <!-- Email -->
+          <input
+            formControlName="email"
+            type="email"
+            id="defaultLoginFormEmail"
+            class="form-control mb-4 w-100"
+            placeholder="E-mail">
+          <!-- Password -->
+          <input
+            formControlName="password"
+            type="password"
+            id="defaultLoginFormPassword"
+            class="form-control mb-4"
+            placeholder="Password">
+          <div id="formFooter">
+            <h6 class="text-left p-2">
+              <a class="underlineHover">Forgot Password?</a>
+            </h6>
+          </div>
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-
-<div class="bg-image">
-<!-- Default form login -->
-<h1>
-<br>
-<br>
-<form class="text-center p-5 w-50">
-  <div class="card bg-white mb-3" style="max-width: 48rem;">
-    <div class="card-header p-3 mb-2 bg-danger text-white"></div>
-    <div class="card-body">
-
-      <h3 class="card-title">Welcome Back!</h3>
-      <h6 class="card-title">Login to your account</h6>
-      <form [formGroup]="loginForm" class="card-text">
-        <!-- Email -->
-        <input
-          formControlName="email"
-          type="email"
-          id="defaultLoginFormEmail"
-          class="form-control mb-4 w-100"
-          placeholder="E-mail">
-        <!-- Password -->
-        <input
-          formControlName="password"
-          type="password"
-          id="defaultLoginFormPassword"
-          class="form-control mb-4"
-          placeholder="Password">
-        <div id="formFooter">
-          <h6 class="text-left p-2">
-            <a class="underlineHover">Forgot Password?</a>
+          <button type="button" class="btn btn-dark" (click)="login()">Login</button>
+          <br>
+          <br>
+          <h6>Not a member?
+            <a [routerLink]="['/signup']">Sign Up</a> here
           </h6>
-        </div>
-
-        <button type="button" class="btn btn-dark" (click)="login()">Login</button>
-        <br>
-        <br>
-        <h6>Not a member?
-          <a [routerLink]="['/signup']">Sign Up</a> here
-        </h6>
-      </form>
+        </form>
+      </div>
     </div>
+  </form>
+  <div class="img-container">
+    <img class="img" src="assets/images/login.png">
   </div>
-</form>
-</h1>
 </div>
-
-
 

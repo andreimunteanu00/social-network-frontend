@@ -1,19 +1,27 @@
-.bg-image {
-    background-image: url('../../assets/images/HomeDesktop@1bun.svg');
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.card__overlay {
-  height: 100%;
-  width: 100%;
-  opacity: 1;
-  transition: .5s ease;
-  background: #eeeeee;
-  border-bottom: #eeeeee;
-  border-right: #eeeeee;
-  box-shadow: none;
+.home {
+  margin-left: 5rem;
+  margin-top: 5rem;
 }
 
+.text {
+  float: left;
+  width: 30%;
+  font-size: 2.2rem;
+}
+
+.img-container {
+  float: right;
+  width: 70%;
+}
+
+.img {
+  width: 60rem;
+  height: 35rem;
+  background: url('../../assets/images/home.png') no-repeat center center/contain;
+}
