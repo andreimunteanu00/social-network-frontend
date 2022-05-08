@@ -1,0 +1,37 @@
+<div class="changepass">
+  <form class="form text-center p-5 w-50">
+    <div class="card bg-white mb-3">
+      <div class="card-header p-3 mb-2 bg-danger text-white"></div>
+      <div class="card-body">
+        <h3 class="card-title">Change password!</h3>
+        <form [formGroup]="changePasswordForm" class="card-text">
+          <!-- Email -->
+          <input
+            formControlName="email"
+            type="email"
+            id="defaultChangePassFormEmail"
+            class="form-control mb-4 w-100"
+            placeholder="E-mail">
+          <!-- Password -->
+          <input
+            formControlName="oldPassword"
+            type="password"
+            id="defaultChangePassFormOldPassword"
+            class="form-control mb-4"
+            placeholder="Old password">
+          <input
+            formControlName="newPassword"
+            type="password"
+            id="defaultChangePassFormNewPassword"
+            class="form-control mb-4"
+            placeholder="New password">
+          <button type="button" class="btn btn-dark" (click)="changePass()">Change password</button>
+        </form>
+      </div>
+    </div>
+  </form>
+  <div class="img-container">
+    <img class="img" src="assets/images/login.png">
+  </div>
+</div>
+
