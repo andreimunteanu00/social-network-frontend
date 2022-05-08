@@ -1,4 +1,4 @@
-<div class="home">
+<div *ngIf="!checkLogin()" class="home">
   <div class="text">
     <h6 class="card-subtitle mb-2 text-muted">STAY CONNECTED</h6><br>
     <p class="card-title">OnlyStudents face ceva ce nu a mai facut nimeni pana acum</p><br>
@@ -7,4 +7,6 @@
   <div class="img-container">
     <div class="img"></div>
   </div>
+</div>
+<div *ngIf="checkLogin()">
 </div>

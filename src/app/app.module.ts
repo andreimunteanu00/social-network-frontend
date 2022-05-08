@@ -17,6 +17,8 @@ import {ErrorHandlerInterceptorService} from "./util/errorhandler.interceptor";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './util/navbar/navbar.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { ChangepassComponent } from './auth/changepass/changepass.component';
+import { SidenavbarComponent } from './util/sidenavbar/sidenavbar.component';
 //import { BackgroundimageComponent } from './backgroundimage/backgroundimage.component';
 
 @NgModule({
@@ -30,7 +32,9 @@ import { SignupComponent } from './auth/signup/signup.component';
     HomeComponent,
     PostComponent,
     NavbarComponent,
-    SignupComponent
+    SignupComponent,
+    ChangepassComponent,
+    SidenavbarComponent
   ],
   imports: [
     BrowserModule,

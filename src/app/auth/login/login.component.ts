@@ -20,9 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    this.loginService.login(this.loginForm.value!).subscribe(res => {
-      console.log(res);
-    })
+    this.loginService.login(this.loginForm.value!).subscribe();
   }
 
 }

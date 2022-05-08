@@ -1,6 +1,6 @@
 <nav class="navbar bg-dark">
   <a [routerLink]="['/']"><img src="../../../assets/images/logo.png" class="navbar-img"></a>
-  <form class="form-inline">
+  <form *ngIf="!checkLogin()" class="form-inline">
     <div class='container'>
       <button
         [routerLink]="['/login']"
@@ -11,6 +11,16 @@
         [routerLink]="['/signup']"
         type="button"
         class="btn btn-danger">Sign Up</button>
+    </div>
+  </form>
+  <form *ngIf="checkLogin()" class="form-inline">
+    <div class='container'>
+      <button
+        style="margin-right: 2rem"
+        (click)="logout()"
+        [routerLink]="['/']"
+        type="button"
+        class='btn btn-light'>Logout <i class="fa-solid fa-right-from-bracket"></i></button>
     </div>
   </form>
 </nav>

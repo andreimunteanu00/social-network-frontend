@@ -9,9 +9,15 @@ import {AuthService} from "../auth/auth.service";
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public authService: AuthService) { }
+  constructor(
+    protected authService: AuthService
+  ) {}
 
   ngOnInit(): void {
+  }
+
+  checkLogin(): boolean {
+    return this.authService.isLogged();
   }
 
 }

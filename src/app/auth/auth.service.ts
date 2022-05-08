@@ -25,19 +25,36 @@ export class AuthService {
         tap((res: any) => {
           this.isUserLoggedIn$.next(true);
           localStorage.setItem("token", res.body.token);
-          this.router.navigate(["post"]);
+          this.router.navigate(["/"]);
         })
       );
+  }
+
+  logout() {
+    localStorage.clear();
+    window.location.reload();
   }
 
   register(user: IUser) {
     return this.http.post(this.resourceUrl + "/register", user, { observe: "response" });
   }
 
+  changepass(email: string, oldPassword: string, newPassword: string) {
+    return this.http.post(this.resourceUrl + "/change-password", { email, oldPassword, newPassword }, { observe: "response" });
+  }
+
   hasRole(role: string): boolean {
     const encodedToken = localStorage.getItem("token");
     const token = this.jwtHelper.decodeToken(encodedToken!);
     return token.role === role;
+  }
+
+  isLogged(): boolean {
+    const encodedToken = localStorage.getItem("token");
+    if (encodedToken) {
+      return true;
+    }
+    return false;
   }
 
 }

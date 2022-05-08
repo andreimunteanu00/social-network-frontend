@@ -30,7 +30,6 @@ export class SignupComponent implements OnInit {
   }
 
   register() {
-    // @ts-ignore
     this.authService.register(this.registerForm.value!).subscribe((res: any) => {
       Swal.fire({
         title: res.body.success,
