@@ -6,6 +6,9 @@
 
 .navbar {
   height: 10vh;
+  position: fixed;
+  width: 100vw;
+  z-index: 1;
 }
 
 .navbar-img {

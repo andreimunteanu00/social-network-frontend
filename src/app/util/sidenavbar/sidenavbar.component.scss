@@ -1,6 +1,9 @@
 .sidebar {
   height: 90vh;
   float: left;
+  position: fixed;
+  margin-top: 10vh;
+  z-index: 1;
 }
 
 hr {

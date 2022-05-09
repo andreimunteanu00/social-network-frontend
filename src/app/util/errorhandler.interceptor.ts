@@ -21,9 +21,7 @@ export class ErrorHandlerInterceptorService implements HttpInterceptor {
     return next.handle(req).pipe(
       tap(null, (err: HttpErrorResponse) => {
         if (err.status === 401) {
-          Swal.fire({
-            title: err.error
-          })
+          window.location.href = '/';
         } else if (err.status === 500) {
           Swal.fire({
             title: 'Internal Server Error',

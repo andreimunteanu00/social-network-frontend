@@ -6,6 +6,8 @@ import {HomeComponent} from "./home/home.component";
 import {PostComponent} from "./post/post.component";
 import {AuthGuard} from "./util/auth.guard";
 import {ChangepassComponent} from "./auth/changepass/changepass.component";
+import {UserComponent} from "./user/user.component";
+import {UserResolver} from "./user/user.route";
 
 const routes: Routes = [
   {
@@ -19,6 +21,13 @@ const routes: Routes = [
   {
     path: "changepass",
     component: ChangepassComponent
+  },
+  {
+    path: "user/:id",
+    component: UserComponent,
+    resolve: {
+      user: UserResolver
+    }
   },
   {
     path: "post",

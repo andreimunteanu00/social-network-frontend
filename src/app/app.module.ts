@@ -19,6 +19,8 @@ import { NavbarComponent } from './util/navbar/navbar.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { ChangepassComponent } from './auth/changepass/changepass.component';
 import { SidenavbarComponent } from './util/sidenavbar/sidenavbar.component';
+import { UserComponent } from './user/user.component';
+import {ImageCropperModule} from "ngx-image-cropper";
 //import { BackgroundimageComponent } from './backgroundimage/backgroundimage.component';
 
 @NgModule({
@@ -34,7 +36,8 @@ import { SidenavbarComponent } from './util/sidenavbar/sidenavbar.component';
     NavbarComponent,
     SignupComponent,
     ChangepassComponent,
-    SidenavbarComponent
+    SidenavbarComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -45,18 +48,19 @@ import { SidenavbarComponent } from './util/sidenavbar/sidenavbar.component';
     IconsModule,
     NavbarModule,
     MDBRootModule,
-    WavesModule
+    WavesModule,
+    ImageCropperModule
   ],
   providers: [
     AuthService,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
+      useClass: ErrorHandlerInterceptorService,
       multi: true
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: ErrorHandlerInterceptorService,
+      useClass: AuthInterceptorService,
       multi: true
     },
     AuthGuard,

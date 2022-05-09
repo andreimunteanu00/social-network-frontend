@@ -1,4 +1,4 @@
-import {IUser} from "./user.mode";
+import {IUser} from "../../user/user.model";
 
 export interface IGroup {
   id: number;

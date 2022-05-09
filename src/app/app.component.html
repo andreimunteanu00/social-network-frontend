@@ -1,7 +1,9 @@
 <div class="appdiv">
-  <app-navbar></app-navbar>
+  <app-navbar style="z-index: 1"></app-navbar>
   <div style="display: inline">
-    <app-sidenavbar></app-sidenavbar>
-    <router-outlet></router-outlet>
+    <app-sidenavbar *ngIf="checkLogin()" ></app-sidenavbar>
+    <div id="routeroutlet">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
