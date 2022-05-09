@@ -59,9 +59,8 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="profilePic">Choose File</label>
                 <input #fileInput formControlName="profilePic" type="file" id="profilePic" (change)="onFileUpload()" />
-              </div>
+              </div><br>
               <!-- Save changes button-->
               <button class="btn btn-primary" type="button" (click)="save()">Save changes</button>
             </form>
