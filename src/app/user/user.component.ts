@@ -12,7 +12,10 @@ import Swal from "sweetalert2";
 })
 export class UserComponent implements OnInit {
 
-  @ViewChild('fileInput', { static: false }) fileInput: ElementRef | undefined;
+  fileToUpload: File | null = null;
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
+  isSaving: boolean | undefined;
 
   file: any;
   userForm = this.fb.group({
@@ -26,16 +29,28 @@ export class UserComponent implements OnInit {
     protected userService: UserService,
     protected route: ActivatedRoute,
     protected fb: FormBuilder
-  ) {
+  ) {}
+
+  ngOnInit(): void {
+    this.isSaving = false;
     this.userService.getUser(this.route.snapshot.params['id']).subscribe((res: any) => {
       this.updateForm(res.body);
       console.log(this.userForm.value!);
     })
   }
 
-  ngOnInit(): void {}
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+  }
+
+  imageCropped(event: any): void {
+    this.userForm.patchValue({
+      profilePic: event.base64,
+    });
+  }
 
   save(): void {
+    this.isSaving = true;
     const user = this.createFromForm();
     this.userService.save(user).subscribe((res: any) => {
       Swal.fire({
@@ -44,19 +59,13 @@ export class UserComponent implements OnInit {
     });
   }
 
-  onFileUpload() {
-    const imageBlob = this.fileInput?.nativeElement.files[0];
-    this.file = new FormData();
-    this.file.set('file', imageBlob);
-  }
-
   protected createFromForm(): IUser {
     return {
       ...new User(),
       id: this.userForm.get(['id'])!.value,
       username: this.userForm.get(['username'])!.value,
       email: this.userForm.get(['email'])!.value,
-      profilePic: this.file
+      profilePic: this.userForm.get(['profilePic'])!.value,
     };
   }
 
@@ -68,4 +77,5 @@ export class UserComponent implements OnInit {
       profilePic: user.profilePic!
     });
   }
+
 }

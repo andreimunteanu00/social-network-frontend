@@ -22,7 +22,7 @@ export class UserService {
   }
 
   save(user: IUser) {
-    return this.http.put(this.resourceUrl + "/" + user.id!, user, { observe: 'response' });
+    return this.http.patch(this.resourceUrl + "/" + user.id!, user, { observe: 'response' });
   }
 
   getImageUser(id: number) {

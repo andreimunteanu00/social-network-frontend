@@ -4,8 +4,9 @@
     <a
       [routerLink]="['/user', id]"
       class="text-white text-decoration-none">
-      {{ profilePic }}
-      <strong>menete</strong>
+      <img *ngIf="this.profilePic" width="32" height="32" class="rounded-circle me-2" [src]="this.profilePic">
+      <img *ngIf="!this.profilePic" width="32" height="32" class="rounded-circle me-2" src="./assets/images/default-profilepic.jpg">
+      <strong> {{ user!.username }} </strong>
     </a>
   </div>
   <hr>
@@ -24,7 +25,7 @@
       <a
         routerLinkActive="routerlinkactive"
         [routerLinkActiveOptions]="{ exact: true }"
-        [routerLink]="['/login']"
+        [routerLink]="['']"
         class="nav-link text-white">
         Dashboard
       </a>
