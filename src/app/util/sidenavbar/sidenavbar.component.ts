@@ -35,8 +35,4 @@ export class SidenavbarComponent implements OnInit {
       this.profilePic = res.body.img;
     })
   }
-
-  checkLogin(): boolean {
-    return this.authService.isLogged();
-  }
 }
