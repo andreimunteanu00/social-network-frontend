@@ -32,7 +32,7 @@ export class SidenavbarComponent implements OnInit {
       this.user = res.body;
     });
     this.userService.getImageUser(this.id!).subscribe((res: any) => {
-      this.profilePic = 'data:image/jpg;base64,' + res.body.data;
+      this.profilePic = res.body.img;
     })
   }
 

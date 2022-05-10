@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {ActivatedRouteSnapshot, Resolve, Router} from "@angular/router";
+import {ActivatedRouteSnapshot, Resolve} from "@angular/router";
 import {IUser, User} from "./user.model";
 import {UserService} from "./user.service";
 import {EMPTY, Observable, of} from "rxjs";

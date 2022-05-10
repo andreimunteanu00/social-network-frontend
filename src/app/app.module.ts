@@ -21,6 +21,7 @@ import { ChangepassComponent } from './auth/changepass/changepass.component';
 import { SidenavbarComponent } from './util/sidenavbar/sidenavbar.component';
 import { UserComponent } from './user/user.component';
 import {ImageCropperModule} from "ngx-image-cropper";
+import { GroupComponent } from './group/group.component';
 //import { BackgroundimageComponent } from './backgroundimage/backgroundimage.component';
 
 @NgModule({
@@ -37,7 +38,8 @@ import {ImageCropperModule} from "ngx-image-cropper";
     SignupComponent,
     ChangepassComponent,
     SidenavbarComponent,
-    UserComponent
+    UserComponent,
+    GroupComponent
   ],
   imports: [
     BrowserModule,
