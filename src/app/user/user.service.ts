@@ -28,4 +28,8 @@ export class UserService {
   getImageUser(id: number) {
     return this.http.get(this.resourceUrl + "/image/" + id, { observe: 'response' });
   }
+
+  checkModerator(id: number) {
+    return this.http.get(this.resourceUrl + "/" + id + "/checkModerator", { observe: "response" });
+  }
 }

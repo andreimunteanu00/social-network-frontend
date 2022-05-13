@@ -5,6 +5,8 @@ import {JwtHelperService} from "@auth0/angular-jwt";
 import {AuthService} from "../../auth/auth.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {IUser} from "../../user/user.model";
+import {UserService} from "../../user/user.service";
+import {ActivatedRoute, ActivatedRouteSnapshot} from "@angular/router";
 
 @Component({
   selector: 'app-mygroup',
@@ -15,20 +17,27 @@ export class MygroupComponent implements OnInit {
 
   group: IGroup | undefined;
   pendingUsers: IUser[] | undefined;
+  moderator: boolean | undefined;
 
   constructor(
     protected groupService: GroupService,
+    protected userService: UserService,
     protected jwtHelper: JwtHelperService,
     public authService: AuthService,
-    protected modalService: NgbModal
+    protected modalService: NgbModal,
+    protected route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    const encodedToken = localStorage.getItem("token");
-    const token = this.jwtHelper.decodeToken(encodedToken!);
-    const id = token.userId;
+    const id = this.route.snapshot.params['id'];
     this.groupService.getGroup(id).subscribe((res: any) => {
       this.group = res.body;
+      let bool1 = this.authService.hasRole('MODERATOR');
+      let bool2;
+      this.userService.checkModerator(this.group!.id!).subscribe((res: any) => {
+        bool2 = res.body;
+        this.moderator = bool1 && bool2;
+      });
     })
   }
 
@@ -54,5 +63,14 @@ export class MygroupComponent implements OnInit {
 
   rejectRequest(groupId: number, userId: number) {
 
+  }
+
+  private checkModerator() {
+    let bool1 = this.authService.hasRole('MODERATOR');
+    let bool2;
+    this.userService.checkModerator(this.group!.id!).subscribe((res: any) => {
+      bool2 = res.body;
+      return bool1 && bool2;
+    });
   }
 }
