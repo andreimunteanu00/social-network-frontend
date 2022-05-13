@@ -1,8 +1,7 @@
 <div class="sidebar d-flex flex-column flex-shrink-0 text-white bg-dark" style="width: 220px;">
   <hr>
-  <div class="profilepic">
+  <div class="profilepic" [routerLink]="['/user', id]">
     <a
-      [routerLink]="['/user', id]"
       class="text-white text-decoration-none">
       <img *ngIf="this.profilePic" width="32" height="32" class="rounded-circle me-2" [src]="this.profilePic">
       <img *ngIf="!this.profilePic" width="32" height="32" class="rounded-circle me-2" src="./assets/images/default-profilepic.jpg">
@@ -25,9 +24,18 @@
       <a
         routerLinkActive="routerlinkactive"
         [routerLinkActiveOptions]="{ exact: true }"
-        [routerLink]="['/group']"
+        [routerLink]="['/discover']"
         class="nav-link text-white">
         <i class="fa-solid fa-compass"></i> Discover
+      </a>
+    </li>
+    <li class="text-center">
+      <a
+        routerLinkActive="routerlinkactive"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="['/groups']"
+        class="nav-link text-white">
+        <i class="fa-solid fa-people-line"></i> My Groups
       </a>
     </li>
   </ul>

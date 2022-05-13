@@ -21,7 +21,9 @@ import { ChangepassComponent } from './auth/changepass/changepass.component';
 import { SidenavbarComponent } from './util/sidenavbar/sidenavbar.component';
 import { UserComponent } from './user/user.component';
 import {ImageCropperModule} from "ngx-image-cropper";
-import { GroupComponent } from './group/group.component';
+import { DiscoverComponent } from './group/discover/discover.component';
+import { GroupComponent } from './group/group/group.component';
+import { MygroupComponent } from './group/mygroup/mygroup.component';
 //import { BackgroundimageComponent } from './backgroundimage/backgroundimage.component';
 
 @NgModule({
@@ -39,7 +41,9 @@ import { GroupComponent } from './group/group.component';
     ChangepassComponent,
     SidenavbarComponent,
     UserComponent,
-    GroupComponent
+    DiscoverComponent,
+    GroupComponent,
+    MygroupComponent
   ],
   imports: [
     BrowserModule,

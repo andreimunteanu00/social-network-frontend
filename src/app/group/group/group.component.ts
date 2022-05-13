@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {IGroup} from "./group.model";
-import {GroupService} from "./group.service";
-import {group} from "@angular/animations";
+import {GroupService} from "../group.service";
+import {IGroup} from "../group.model";
 import {JwtHelperService} from "@auth0/angular-jwt";
 
 @Component({
-  selector: 'app-group',
+  selector: 'app-mygroup',
   templateUrl: './group.component.html',
   styleUrls: ['./group.component.scss']
 })
@@ -22,7 +21,7 @@ export class GroupComponent implements OnInit {
     const encodedToken = localStorage.getItem("token");
     const token = this.jwtHelper.decodeToken(encodedToken!);
     const id = token.userId;
-    this.groupService.getGroupsUserNotIn(id).subscribe((res: any) => {
+    this.groupService.getGroupsUserIn(id).subscribe((res: any) => {
       this.groups = res.body;
     })
   }

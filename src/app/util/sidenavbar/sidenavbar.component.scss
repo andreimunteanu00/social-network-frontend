@@ -15,6 +15,11 @@ hr {
   background: none !important;
 }
 
+.nav-link:hover {
+  background: #495057 !important;
+  cursor: pointer;
+}
+
 .routerlinkactive {
   background: #495057 !important;
 }
@@ -26,6 +31,11 @@ hr {
 .profilepic {
   padding: 10px;
   text-align: center;
+}
+
+.profilepic:hover {
+  cursor: pointer;
+  background: #495057 !important;
 }
 
 .bottom-sidebar {

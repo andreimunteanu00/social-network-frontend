@@ -1,0 +1,11 @@
+<div style="padding-left: 200px">
+  <div id="group" *ngFor="let group of groups">
+    <div class="card">
+      <img *ngIf="group.imageString" width="32" height="32" class="rounded-circle me-2" [src]="group.imageString">
+      <img *ngIf="!group.imageString" width="32" height="32" class="rounded-circle me-2" src="../../../assets/images/default-profilepic.jpg">
+      <h3>{{ group.name }}</h3>
+      <p> {{ group.description }}</p>
+      <button class="btn btn-primary" [routerLink]="['/mygroup', group.id!]">Enter</button>
+    </div>
+  </div>
+</div>

@@ -24,7 +24,6 @@ export class AuthService {
   login(user: IUser) {
     return this.http.post(this.resourceUrl + "/login", user, { observe: "response" })
       .pipe(
-        // @ts-ignore
         first(),
         tap((res: any) => {
           this.isUserLoggedIn$.next(true);

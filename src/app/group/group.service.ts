@@ -19,6 +19,22 @@ export class GroupService {
   }
 
   getGroupsUserNotIn(id: number) {
-    return this.http.get(this.resourceUrl + "/userNotIn/" + id)
+    return this.http.get(this.resourceUrl + "/userNotIn/" + id);
+  }
+
+  requestJoin(id: number) {
+    return this.http.post(this.resourceUrl + '/' + id + '/join', null, { observe: "response" });
+  }
+
+  getGroupsUserIn(id: number) {
+    return this.http.get(this.resourceUrl + "/userIn/" + id, { observe: "response" });
+  }
+
+  listPendingUsers(id: number) {
+    return this.http.get(this.resourceUrl + "/" + id + "/pending", { observe: "response" });
+  }
+
+  approveRequest(groupId: number, userId: number) {
+    return this.http.post(this.resourceUrl + "/" + groupId + "/approve", {userId}, { observe: "response" });
   }
 }

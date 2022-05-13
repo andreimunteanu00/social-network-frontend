@@ -1,0 +1,25 @@
+<div style="padding-left: 200px; padding-top: 100px">
+  <button *ngIf="authService.hasRole('MODERATOR')" type="button" (click)="seePendingUsers(group!.id!, pendingUsersModal)">See pending users</button>
+  <p>mygroup works! {{group!.id}}</p>
+</div>
+
+<ng-template #pendingUsersModal let-modal>
+  <div class='table-responsive' id='showModal'>
+    <table class='table' aria-describedby='page-heading'>
+      <thead>
+        <tr>
+          <th scope='col'>
+            Username
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let p of pendingUsers' data-cy='entityTable'>
+          <td>{{ p?.username }}</td>
+          <td><button type="button" (click)="approveRequest(group!.id!, p.id!)">Accept</button></td>
+          <td><button type="button" (click)="rejectRequest(group!.id!, p.id!)">Decline</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>

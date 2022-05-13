@@ -8,8 +8,10 @@ import {AuthGuard} from "./util/auth.guard";
 import {ChangepassComponent} from "./auth/changepass/changepass.component";
 import {UserComponent} from "./user/user.component";
 import {UserResolver} from "./user/user.resolver";
-import {GroupComponent} from "./group/group.component";
+import {DiscoverComponent} from "./group/discover/discover.component";
 import {GroupResolver} from "./group/group.resolver";
+import {GroupComponent} from "./group/group/group.component";
+import {MygroupComponent} from "./group/mygroup/mygroup.component";
 
 const routes: Routes = [
   {
@@ -32,8 +34,22 @@ const routes: Routes = [
     }
   },
   {
-    path: "group",
+    path: "discover",
+    component: DiscoverComponent,
+    resolve: {
+      user: GroupResolver
+    }
+  },
+  {
+    path: "groups",
     component: GroupComponent,
+    resolve: {
+      user: GroupResolver
+    }
+  },
+  {
+    path: "mygroup/:id",
+    component: MygroupComponent,
     resolve: {
       user: GroupResolver
     }
