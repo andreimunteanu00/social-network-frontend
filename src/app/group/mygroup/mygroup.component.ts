@@ -7,6 +7,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {IUser} from "../../user/user.model";
 import {UserService} from "../../user/user.service";
 import {ActivatedRoute, ActivatedRouteSnapshot} from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-mygroup',
@@ -57,12 +58,22 @@ export class MygroupComponent implements OnInit {
     });
   }
 
-  approveRequest(groupId: number, userId: number) {
-    this.groupService.approveRequest(groupId, userId).subscribe();
-  }
-
-  rejectRequest(groupId: number, userId: number) {
-
+  approveOrRejectRequest(groupId: number, userId: number, response: boolean) {
+    this.groupService.approveOrRejectRequest(groupId, userId, response).subscribe((res: any) => {
+      if (res.body.success) {
+        Swal.fire({
+          title: res.body.success,
+          icon: "success",
+          confirmButtonColor: "green"
+        })
+      } else {
+        Swal.fire({
+          title: res.body.error,
+          icon: "info",
+          confirmButtonColor: "blue"
+        })
+      }
+    });
   }
 
   private checkModerator() {

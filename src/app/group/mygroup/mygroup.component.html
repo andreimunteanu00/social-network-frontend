@@ -16,8 +16,8 @@
       <tbody>
         <tr *ngFor='let p of pendingUsers' data-cy='entityTable'>
           <td>{{ p?.username }}</td>
-          <td><button type="button" (click)="approveRequest(group!.id!, p.id!)">Accept</button></td>
-          <td><button type="button" (click)="rejectRequest(group!.id!, p.id!)">Decline</button></td>
+          <td><button type="button" (click)="approveOrRejectRequest(group!.id!, p.id!, true)">Accept</button></td>
+          <td><button type="button" (click)="approveOrRejectRequest(group!.id!, p.id!, false)">Decline</button></td>
         </tr>
       </tbody>
     </table>

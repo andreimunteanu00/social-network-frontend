@@ -34,7 +34,7 @@ export class GroupService {
     return this.http.get(this.resourceUrl + "/" + id + "/pending", { observe: "response" });
   }
 
-  approveRequest(groupId: number, userId: number) {
-    return this.http.post(this.resourceUrl + "/" + groupId + "/approve", {userId}, { observe: "response" });
+  approveOrRejectRequest(groupId: number, userId: number, response: boolean) {
+    return this.http.post(this.resourceUrl + "/" + groupId + "/approve", {userId, response}, { observe: "response" });
   }
 }
