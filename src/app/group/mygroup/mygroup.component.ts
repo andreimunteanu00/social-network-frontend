@@ -75,13 +75,4 @@ export class MygroupComponent implements OnInit {
       }
     });
   }
-
-  private checkModerator() {
-    let bool1 = this.authService.hasRole('MODERATOR');
-    let bool2;
-    this.userService.checkModerator(this.group!.id!).subscribe((res: any) => {
-      bool2 = res.body;
-      return bool1 && bool2;
-    });
-  }
 }
