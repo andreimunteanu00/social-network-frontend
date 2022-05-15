@@ -1,0 +1,14 @@
+<div id="chat-applicaton">
+  <div #scrollMe id="chat-window">
+    <div id="output" *ngFor="let data of output">
+      <div *ngIf="data.sender=== this.username" style="padding: 20px; text-align: end">
+        <span><strong>{{data.sender}} : </strong>{{data.message}}</span>
+      </div>
+      <div *ngIf="data.sender !== this.username">
+        <span><strong>{{data.sender}} : </strong>{{data.message}}</span>
+      </div>
+    </div>
+  </div>
+  <input id="message" type="text" [(ngModel)]="message" placeholder="Message" autocomplete="off"/>
+  <button type="button" id="send" style="cursor: pointer;" (click)="sendMessage()" (keydown.enter)="sendMessage()">Send</button>
+</div>

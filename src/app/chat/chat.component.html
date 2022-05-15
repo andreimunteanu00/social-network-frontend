@@ -1,0 +1,32 @@
+<div style="padding-left: 200px; padding-top: 200px">
+  <button (click)="getNewChats(chatModal)">Create new chat</button>
+</div>
+
+<div style="padding-left: 200px;">
+  <div id="group" *ngFor="let chat of chats">
+    <div class="card">
+      <h3>{{ chat.id }}</h3>
+      <button class="btn btn-primary" [routerLink]="[chat.id!]">Join</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #chatModal let-modal>
+  <div class='table-responsive' id='showModal'>
+    <table class='table' aria-describedby='page-heading'>
+      <thead>
+      <tr>
+        <th scope='col'>
+          Username
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor='let u of newUsersToChat' data-cy='entityTable'>
+        <td>{{ u?.username }}</td>
+        <td><button (click)="createNewChat(u.id!)">New chat</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>

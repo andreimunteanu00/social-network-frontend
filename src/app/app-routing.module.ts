@@ -12,6 +12,9 @@ import {DiscoverComponent} from "./group/discover/discover.component";
 import {GroupResolver} from "./group/group.resolver";
 import {GroupComponent} from "./group/group/group.component";
 import {MygroupComponent} from "./group/mygroup/mygroup.component";
+import {ChatComponent} from "./chat/chat.component";
+import {RoomComponent} from "./chat/room/room.component";
+import {ChatResolver} from "./chat/chat.resolver";
 
 const routes: Routes = [
   {
@@ -21,6 +24,20 @@ const routes: Routes = [
   {
     path: "signup",
     component: SignupComponent,
+  },
+  {
+    path: "chats",
+    component: ChatComponent,
+    resolve: {
+      chat: ChatResolver
+    }
+  },
+  {
+    path: "chats/:id",
+    component: RoomComponent,
+    resolve: {
+      chat: ChatResolver
+    }
   },
   {
     path: "changepass",

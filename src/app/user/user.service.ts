@@ -32,4 +32,16 @@ export class UserService {
   checkModerator(id: number) {
     return this.http.get(this.resourceUrl + "/" + id + "/checkModerator", { observe: "response" });
   }
+
+  getChats() {
+    return this.http.get(this.resourceUrl + "/chats", { observe: "response" });
+  }
+
+  getNewChats() {
+    return this.http.get(this.resourceUrl + "/newChats", { observe: "response" });
+  }
+
+  createChat(id: number) {
+    return this.http.get(this.resourceUrl + "/" + id + "/createChat", { observe: "response" });
+  }
 }
