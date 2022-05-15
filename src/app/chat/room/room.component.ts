@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {WebSocketService} from "../web-socket.service";
 import {UserService} from "../../user/user.service";
 import {JwtHelperService} from "@auth0/angular-jwt";
@@ -11,7 +11,9 @@ import {ChatService} from "../chat.service";
   templateUrl: './room.component.html',
   styleUrls: ['./room.component.scss']
 })
-export class RoomComponent implements OnInit, OnDestroy {
+export class RoomComponent implements OnInit, AfterViewChecked {
+
+  @ViewChild('scrollMe') private myScrollContainer: ElementRef | undefined;
 
   title = 'Websocket Angular client ';
   username: string | undefined;
@@ -40,30 +42,38 @@ export class RoomComponent implements OnInit, OnDestroy {
         this.updateMessage(data);
       }
     })
+    this.scrollToBottom();
+  }
+
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom(): void {
+    try {
+      this.myScrollContainer!.nativeElement.scrollTop = this.myScrollContainer!.nativeElement.scrollHeight;
+    } catch(err) { }
   }
 
   sendMessage(): void {
     this.webSocketService.sendMessage({
       message: this.message,
-      user: this.username,
+      sender: this.username,
       room: this.roomId
     });
     this.message = "";
   }
 
   updateMessage(data:any) {
+    this.output.push(data);
     this.chatService.getById(this.roomId!).subscribe((res: any) => {
-      if(!!!data) return;
+      if(!data) return;
       const message = new Message();
       message.message = data.message;
       message.chat = res.body;
       message.sender = this.username;
       this.chatService.save(message).subscribe();
-      this.output.push(data);
     });
-  }
-
-  ngOnDestroy(): void {
   }
 
 }
