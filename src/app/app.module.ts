@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthService} from "./auth/auth.service";
 import { PostComponent } from './post/post.component';
@@ -24,6 +24,8 @@ import {ImageCropperModule} from "ngx-image-cropper";
 import { DiscoverComponent } from './group/discover/discover.component';
 import { GroupComponent } from './group/group/group.component';
 import { MygroupComponent } from './group/mygroup/mygroup.component';
+import { ChatComponent } from './chat/chat.component';
+import { RoomComponent } from './chat/room/room.component';
 //import { BackgroundimageComponent } from './backgroundimage/backgroundimage.component';
 
 @NgModule({
@@ -43,7 +45,9 @@ import { MygroupComponent } from './group/mygroup/mygroup.component';
     UserComponent,
     DiscoverComponent,
     GroupComponent,
-    MygroupComponent
+    MygroupComponent,
+    ChatComponent,
+    RoomComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +59,8 @@ import { MygroupComponent } from './group/mygroup/mygroup.component';
     NavbarModule,
     MDBRootModule,
     WavesModule,
-    ImageCropperModule
+    ImageCropperModule,
+    FormsModule
   ],
   providers: [
     AuthService,

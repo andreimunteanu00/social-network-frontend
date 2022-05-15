@@ -16,6 +16,7 @@ export class SidenavbarComponent implements OnInit {
   id: number | undefined;
   profilePic: any;
   user: IUser | undefined;
+  username: string | undefined;
 
   constructor(
     protected authService: AuthService,
@@ -30,6 +31,7 @@ export class SidenavbarComponent implements OnInit {
     this.id = token.userId;
     this.userService.getUser(this.id!).subscribe((res: any) => {
       this.user = res.body;
+      this.username = this.user!.username!;
     });
     this.userService.getImageUser(this.id!).subscribe((res: any) => {
       this.profilePic = res.body.img;

@@ -5,7 +5,7 @@
       class="text-white text-decoration-none">
       <img *ngIf="this.profilePic" width="32" height="32" class="rounded-circle me-2" [src]="this.profilePic">
       <img *ngIf="!this.profilePic" width="32" height="32" class="rounded-circle me-2" src="./assets/images/default-profilepic.jpg">
-      <strong> {{ user!.username }} </strong>
+      <strong> {{ username }} </strong>
     </a>
   </div>
   <hr>
@@ -36,6 +36,15 @@
         [routerLink]="['/groups']"
         class="nav-link text-white">
         <i class="fa-solid fa-people-line"></i> My Groups
+      </a>
+    </li>
+    <li class="text-center">
+      <a
+        routerLinkActive="routerlinkactive"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="['/chats']"
+        class="nav-link text-white">
+        <i class="fa-solid fa-comment-dots"></i> My Chats
       </a>
     </li>
   </ul>
