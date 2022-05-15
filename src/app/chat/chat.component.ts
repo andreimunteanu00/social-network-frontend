@@ -3,6 +3,7 @@ import {UserService} from "../user/user.service";
 import {IChat} from "./chat.model";
 import {IUser} from "../user/user.model";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-chat',
@@ -17,6 +18,7 @@ export class ChatComponent implements OnInit {
   constructor(
     protected userService: UserService,
     protected modalService: NgbModal,
+    protected route: Router
   ) {}
 
   ngOnInit(): void {
@@ -40,5 +42,10 @@ export class ChatComponent implements OnInit {
       centered: true,
       size: 'xl'
     });
+  }
+
+  createNewChat(id: number) {
+    this.userService.createChat(id).subscribe();
+    location.reload();
   }
 }

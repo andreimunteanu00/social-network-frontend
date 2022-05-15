@@ -40,4 +40,8 @@ export class UserService {
   getNewChats() {
     return this.http.get(this.resourceUrl + "/newChats", { observe: "response" });
   }
+
+  createChat(id: number) {
+    return this.http.get(this.resourceUrl + "/" + id + "/createChat", { observe: "response" });
+  }
 }

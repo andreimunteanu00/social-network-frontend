@@ -24,6 +24,7 @@
       <tbody>
       <tr *ngFor='let u of newUsersToChat' data-cy='entityTable'>
         <td>{{ u?.username }}</td>
+        <td><button (click)="createNewChat(u.id!)">New chat</button></td>
       </tr>
       </tbody>
     </table>
