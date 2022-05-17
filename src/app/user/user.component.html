@@ -1,5 +1,5 @@
-<div style="padding-left: 220px; padding-top: 3rem; align-items: center" >
-  <form class="form p-5 w-50">
+<div class="container">
+  <form class="form p-5 w-50" novalidate>
     <div class="card bg-white mb-3">
       <div class="card-header p-3 mb-2 bg-dark text-white"></div>
       <div class="card-body">
@@ -19,12 +19,12 @@
                 <!-- Form Group (first name)-->
                 <div class="col-md-6">
                   <label class="small mb-1" for="inputFirstName">First name</label>
-                  <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name">
+                  <input formControlName="firstName" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name">
                 </div>
                 <!-- Form Group (last name)-->
                 <div class="col-md-6">
                   <label class="small mb-1" for="inputLastName">Last name</label>
-                  <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name">
+                  <input formControlName="lastName" class="form-control" id="inputLastName" type="text" placeholder="Enter your last name">
                 </div>
               </div>
               <!-- Form Row        -->
@@ -32,34 +32,22 @@
                 <!-- Form Group (organization name)-->
                 <div class="col-md-6">
                   <label class="small mb-1" for="inputOrgName">University</label>
-                  <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your university name">
+                  <input formControlName="university" class="form-control" id="inputOrgName" type="text" placeholder="Enter your university name">
                 </div>
-                <!-- Form Group (location)-->
+                <!-- Form Group (birthdate)-->
                 <div class="col-md-6">
-                  <label class="small mb-1" for="inputLocation">Location</label>
-                  <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location">
+                  <label class="small mb-1" for="inputBirthday">Birthday</label>
+                  <input formControlName="birthDate" class="form-control" id="inputBirthday" type="date" name="birthday" placeholder="Enter your birthday">
                 </div>
               </div>
               <!-- Form Group (email address)-->
               <div class="mb-3">
                 <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address">
+                <input formControlName="email" class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address">
               </div>
               <!-- Form Row-->
-              <div class="row gx-3 mb-3">
-                <!-- Form Group (phone number)-->
-                <div class="col-md-6">
-                  <label class="small mb-1" for="inputPhone">Phone number</label>
-                  <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number">
-                </div>
-                <!-- Form Group (birthday)-->
-                <div class="col-md-6">
-                  <label class="small mb-1" for="inputBirthday">Birthday</label>
-                  <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday">
-                </div>
-              </div>
               <div class="form-group">
-                <label for="profilePic">Choose File</label>
+                <label for="profilePic">Profile pic &nbsp;</label>
                 <input #fileInput formControlName="profilePic" type="file" id="profilePic" (change)="fileChangeEvent($event)" />
                 <image-cropper
                   [imageChangedEvent]="imageChangedEvent"
@@ -72,7 +60,7 @@
                 <div></div>
               </div>
               <!-- Save changes button-->
-              <button class="btn btn-primary" type="button" (click)="save()">Save changes</button>
+              <button [disabled]="userForm.invalid" class="btn btn-primary" type="button" (click)="save()">Save changes</button>
             </form>
           </div>
         </div>

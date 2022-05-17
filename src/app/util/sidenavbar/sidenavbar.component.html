@@ -1,10 +1,10 @@
-<div class="sidebar d-flex flex-column flex-shrink-0 text-white bg-dark" style="width: 220px;">
+<div class="sidebar d-flex flex-column flex-shrink-0 text-white bg-dark" style="width: 15%;">
   <hr>
   <div class="profilepic" [routerLink]="['/user', id]">
     <a
       class="text-white text-decoration-none">
-      <img *ngIf="this.profilePic" width="32" height="32" class="rounded-circle me-2" [src]="this.profilePic">
-      <img *ngIf="!this.profilePic" width="32" height="32" class="rounded-circle me-2" src="./assets/images/default-profilepic.jpg">
+      <img *ngIf="this.profilePic" width="32rem" height="32rem" class="rounded-circle me-2" [src]="this.profilePic">
+      <img *ngIf="!this.profilePic" width="32rem" height="32rem" class="rounded-circle me-2" src="./assets/images/default-profilepic.jpg">
       <strong> {{ username }} </strong>
     </a>
   </div>

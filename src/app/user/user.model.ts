@@ -1,8 +1,12 @@
 import {IGroup} from "../group/group.model";
+import * as dayjs from "dayjs";
 
 export interface IUser {
   id?: number;
   username?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  birthDate?: dayjs.Dayjs | null;
   email?: string | null;
   university?: string | null;
   password?: string | null;
@@ -16,6 +20,9 @@ export class User implements IUser {
   constructor(
     public id?: number,
     public username?: string | null,
+    public firstName?: string | null,
+    public lastName?: string | null,
+    public birthDate?: dayjs.Dayjs | null,
     public email?: string | null,
     public university?: string | null,
     public password?: string | null,

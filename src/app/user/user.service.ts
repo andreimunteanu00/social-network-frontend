@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {IUser} from "./user.model";
+import * as dayjs from "dayjs";
+import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +20,14 @@ export class UserService {
   ) {}
 
   getUser(id: number) {
-    return this.http.get(this.resourceUrl + "/" + id, { observe: 'response' });
+    return this.http.get(this.resourceUrl + "/" + id, { observe: 'response' })
+      .pipe(map((res: any) => this.convertDateFromServer(res)));
   }
 
   save(user: IUser) {
-    return this.http.patch(this.resourceUrl + "/" + user.id!, user, { observe: 'response' });
+    const copy = this.convertDateFromClient(user);
+    return this.http.patch(this.resourceUrl + "/" + user.id!, user, { observe: 'response' })
+      .pipe(map((res: any) => this.convertDateFromServer(res)));
   }
 
   getImageUser(id: number) {
@@ -43,5 +48,27 @@ export class UserService {
 
   createChat(id: number) {
     return this.http.get(this.resourceUrl + "/" + id + "/createChat", { observe: "response" });
+  }
+
+  protected convertDateFromClient(user: IUser) {
+    return Object.assign({}, user, {
+      birthDate: user.birthDate ? JSON.stringify(user.birthDate) : undefined,
+    });
+  }
+
+  protected convertDateFromServer(res: any) {
+    if (res.body) {
+      res.body.birthDate = res.body.birthDate ? dayjs(res.body.birthDate).format('YYYY-DD-MM') : undefined;
+    }
+    return res;
+  }
+
+  protected convertDateArrayFromServer(res: any) {
+    if (res.body) {
+      res.body.forEach((user: IUser) => {
+        user.birthDate = user.birthDate ? dayjs(user.birthDate) : undefined;
+      });
+    }
+    return res;
   }
 }

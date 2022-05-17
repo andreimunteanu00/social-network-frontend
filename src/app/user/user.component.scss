@@ -5,6 +5,12 @@
   //background: #F8F9FA;
 }
 
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .form-check-label {
   text-align: left;
 }
@@ -31,10 +37,10 @@
 .card {
   padding-top: 0 !important;
 }
-
 .form {
-  float: left;
-  width: 30%;
+  align-content: center;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .img-container {
