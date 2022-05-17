@@ -1,9 +1,18 @@
+.button-newchat {
+  display: flex;
+  justify-content: end;
+  text-align: end;
+  margin-right: 2rem;
+}
+
 #group {
   display: inline-block;
-  margin: 20px;
+  margin: 1rem;
 }
+
 .card {
   padding: 10px;
   width: 500px;
   height: 200px;
 }
+

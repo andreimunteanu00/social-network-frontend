@@ -1,8 +1,8 @@
-<div style="padding-left: 200px; padding-top: 200px">
-  <button (click)="getNewChats(chatModal)">Create new chat</button>
+<div class="button-newchat">
+  <button class="btn btn-success" (click)="getNewChats(chatModal)">Create new chat</button>
 </div>
 
-<div style="padding-left: 200px;">
+<div>
   <div id="group" *ngFor="let chat of chats">
     <div class="card">
       <h3>{{ chat.id }}</h3>
