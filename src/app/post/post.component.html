@@ -7,7 +7,7 @@
       <p> {{ post.likeCount }} </p>
 
       <button class="btn btn-primary" (click)="likePost(post)" *ngIf="!post.alreadyLiked" > Like </button>
-      <button class="btn btn-primary" (click)="likePost(post)" *ngIf="post.alreadyLiked" > Unlike </button>
+      <button class="btn btn-primary" (click)="unlikePost(post)" *ngIf="post.alreadyLiked" > Unlike </button>
     </div>
   </div>
 </div>

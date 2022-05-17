@@ -13,6 +13,10 @@ export class PostService {
   ) { }
 
   like(post: Post) {
-    return this.http.put(this.resourceUrl + '/' + post.id, { observe: 'response' });
+    return this.http.patch(this.resourceUrl + '/' + post.id, { observe: 'response' });
+  }
+
+  unlike(post: Post) {
+    return this.http.patch(this.resourceUrl + '/' + post.id + '/unlike', { observe: 'response' });
   }
 }

@@ -33,6 +33,16 @@ export class PostComponent implements OnInit {
       post.likeCount++;
       post.alreadyLiked = true;
     });
+  }
 
+  unlikePost(post: Post): void {
+    if (!post.alreadyLiked) {
+      return;
+    }
+
+    this.postService.unlike(post).subscribe((res: any) => {
+      post.likeCount--;
+      post.alreadyLiked = false;
+    })
   }
 }
