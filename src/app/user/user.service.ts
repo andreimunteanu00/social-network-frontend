@@ -44,4 +44,8 @@ export class UserService {
   createChat(id: number) {
     return this.http.get(this.resourceUrl + "/" + id + "/createChat", { observe: "response" });
   }
+
+  getFeed(lastIndex: number) {
+    return this.http.get(this.resourceUrl + "/feed/" + lastIndex, { observe: "response" });
+  }
 }
