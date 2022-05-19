@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {Post} from "./post.model";
 import {UserService} from "../user/user.service";
@@ -10,17 +10,21 @@ import {PostService} from "./post.service";
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
-  posts: Post[] | undefined;
+  posts!: Post[] | undefined;
+  done!: boolean;
 
   constructor(
-    protected jwtHelper: JwtHelperService,
     protected postService: PostService,
     protected userService: UserService
   ) { }
 
   ngOnInit(): void {
-    this.userService.getFeed(0).subscribe((res: any) => {
+    this.posts = [];
+
+    this.userService.getFeed(-1).subscribe((res: any) => {
       this.posts = res.body;
+      // @ts-ignore
+      this.done = this.posts?.length < 10;
     })
   }
 
@@ -44,5 +48,22 @@ export class PostComponent implements OnInit {
       post.likeCount--;
       post.alreadyLiked = false;
     })
+  }
+
+  @HostListener("window:scroll", [])
+  onScroll(): void {
+    if (!this.done) {
+      const triggerAt: number = 128;
+      if (document.body.scrollHeight - (window.innerHeight + window.scrollY) <= triggerAt) {
+        // @ts-ignore
+        let lastIndex = this.posts[this.posts?.length - 1].id;
+
+        this.userService.getFeed(lastIndex).subscribe((res: any) => {
+          let newPosts = res.body;
+          this.posts = this.posts?.concat(newPosts);
+          this.done = newPosts.length < 10;
+        });
+      }
+    }
   }
 }
