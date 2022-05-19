@@ -1,9 +1,10 @@
-<div style="padding-left: 200px">
+<div class="mt-2 mb-5" style="padding-left: 165px">
   <div id="post" *ngFor="let post of posts">
-    <div class="card" >
+    <div class="card mb-1 p-3" >
       <h3> {{ post.title }} </h3>
+      <p class="f"> Created {{ post.timeCreatedString }} </p>
+      <hr/>
       <p> {{ post.bodyText }} </p>
-      <p> {{ post.timeCreatedString }} </p>
       <p> {{ post.likeCount }} </p>
 
       <button class="btn btn-primary" (click)="likePost(post)" *ngIf="!post.alreadyLiked" > Like </button>

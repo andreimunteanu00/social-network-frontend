@@ -12,6 +12,7 @@ import {PostService} from "./post.service";
 export class PostComponent implements OnInit {
   posts!: Post[] | undefined;
   done!: boolean;
+  busy: boolean = false;
 
   constructor(
     protected postService: PostService,
@@ -52,9 +53,11 @@ export class PostComponent implements OnInit {
 
   @HostListener("window:scroll", [])
   onScroll(): void {
-    if (!this.done) {
+    if (!this.done && !this.busy) {
       const triggerAt: number = 128;
       if (document.body.scrollHeight - (window.innerHeight + window.scrollY) <= triggerAt) {
+        this.busy = true;
+
         // @ts-ignore
         let lastIndex = this.posts[this.posts?.length - 1].id;
 
@@ -62,6 +65,8 @@ export class PostComponent implements OnInit {
           let newPosts = res.body;
           this.posts = this.posts?.concat(newPosts);
           this.done = newPosts.length < 10;
+
+          this.busy = false;
         });
       }
     }
