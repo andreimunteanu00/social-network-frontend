@@ -5,6 +5,7 @@ export interface IPost {
   timeCreatedString: string;
   likeCount: number;
   alreadyLiked: boolean;
+  commentIsHidden: boolean;
   bodyText?: string;
 }
 
@@ -16,6 +17,7 @@ export class Post implements IPost {
     public timeCreatedString: string,
     public likeCount: number,
     public alreadyLiked: boolean,
+    public commentIsHidden: boolean,
     public bodyText?: string,
   ) { }
 }

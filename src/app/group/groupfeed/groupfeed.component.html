@@ -9,6 +9,14 @@
 
       <button class="btn btn-primary" (click)="likePost(post)" *ngIf="!post.alreadyLiked" > Like </button>
       <button class="btn btn-primary" (click)="unlikePost(post)" *ngIf="post.alreadyLiked" > Unlike </button>
+
+      <button class="btn btn-primary bg-light text-black" (click)="post.commentIsHidden = !post.commentIsHidden"> Add Comment </button>
+      <div class="comment-div" [hidden]="post.commentIsHidden">
+          <textarea class="rounded"
+                    placeholder="What are your thoughts?"
+                    autosize></textarea>
+          <button class="position-absolute end-0 bottom-0 m-2 rounded-circle">S</button>
+      </div>
     </div>
   </div>
 </div>

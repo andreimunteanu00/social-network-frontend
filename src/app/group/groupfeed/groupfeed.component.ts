@@ -6,13 +6,15 @@ import {PostService} from "../../post/post.service";
 @Component({
   selector: 'app-groupfeed',
   templateUrl: './groupfeed.component.html',
-  styleUrls: ['./groupfeed.component.scss']
+  styleUrls: ['./groupfeed.component.scss'],
 })
 export class GroupfeedComponent implements OnInit {
   posts!: Post[];
   done!: boolean;
   busy!: boolean;
   @Input() groupId!: number;
+
+  isShown: boolean = true;
 
   constructor(
     private groupService: GroupService,
@@ -23,6 +25,7 @@ export class GroupfeedComponent implements OnInit {
     this.groupService.getGroupFeed(this.groupId, -1).subscribe((res: any) => {
       this.posts = res.body;
       this.done = this.posts.length < 10;
+      this.posts.forEach(p => p.commentIsHidden = true);
     });
   }
 
@@ -58,7 +61,8 @@ export class GroupfeedComponent implements OnInit {
         let lastIndex = this.posts[this.posts.length - 1].id;
 
         this.groupService.getGroupFeed(this.groupId, lastIndex).subscribe((res: any) => {
-          let newPosts = res.body;
+          let newPosts: Post[] = res.body;
+          newPosts.forEach(p => p.commentIsHidden = true);
           this.posts = this.posts.concat(newPosts);
           this.done = newPosts.length < 10;
 

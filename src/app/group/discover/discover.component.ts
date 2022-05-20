@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {IGroup} from "../group.model";
 import {GroupService} from "../group.service";
-import {group} from "@angular/animations";
 import {JwtHelperService} from "@auth0/angular-jwt";
-import {UserService} from "../../user/user.service";
 import Swal from "sweetalert2";
 
 @Component({

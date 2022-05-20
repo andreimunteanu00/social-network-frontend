@@ -27,6 +27,7 @@ import {MygroupComponent} from './group/mygroup/mygroup.component';
 import {ChatComponent} from './chat/chat.component';
 import {RoomComponent} from './chat/room/room.component';
 import {GroupfeedComponent} from './group/groupfeed/groupfeed.component';
+import {AutosizeModule} from "ngx-autosize";
 
 //import { BackgroundimageComponent } from './backgroundimage/backgroundimage.component';
 
@@ -63,7 +64,8 @@ import {GroupfeedComponent} from './group/groupfeed/groupfeed.component';
     MDBRootModule,
     WavesModule,
     ImageCropperModule,
-    FormsModule
+    FormsModule,
+    AutosizeModule
   ],
   providers: [
     AuthService,
