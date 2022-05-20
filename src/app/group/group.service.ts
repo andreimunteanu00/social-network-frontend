@@ -37,4 +37,8 @@ export class GroupService {
   approveOrRejectRequest(groupId: number, userId: number, response: boolean) {
     return this.http.post(this.resourceUrl + "/" + groupId + "/approve", {userId, response}, { observe: "response" });
   }
+
+  getGroupFeed(groupId: number, lastIndex: number) {
+    return this.http.get(this.resourceUrl + "/" + groupId + "/posts/" + lastIndex, {observe: "response"});
+  }
 }

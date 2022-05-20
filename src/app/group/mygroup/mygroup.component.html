@@ -1,6 +1,8 @@
 <div style="padding-left: 200px; padding-top: 100px">
   <button *ngIf="moderator" type="button" (click)="seePendingUsers(group!.id!, pendingUsersModal)">See pending users</button>
-  <p>mygroup works! {{group!.id}}</p>
+
+  <app-groupfeed [groupId]="group!.id!" ></app-groupfeed>
+
 </div>
 
 <ng-template #pendingUsersModal let-modal>
