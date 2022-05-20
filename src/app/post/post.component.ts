@@ -24,6 +24,7 @@ export class PostComponent implements OnInit {
     this.userService.getFeed(-1).subscribe((res: any) => {
       this.posts = res.body;
       this.done = this.posts.length < 10;
+      this.posts.forEach(p => p.commentIsHidden = true);
     })
   }
 
@@ -59,7 +60,8 @@ export class PostComponent implements OnInit {
         let lastIndex = this.posts[this.posts.length - 1].id;
 
         this.userService.getFeed(lastIndex).subscribe((res: any) => {
-          let newPosts = res.body;
+          let newPosts: Post[] = res.body;
+          newPosts.forEach(p => p.commentIsHidden = true);
           this.posts = this.posts.concat(newPosts);
           this.done = newPosts.length < 10;
 
