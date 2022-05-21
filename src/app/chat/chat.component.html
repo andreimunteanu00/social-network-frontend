@@ -1,32 +1,33 @@
-<div style="padding-left: 200px; padding-top: 200px">
-  <button (click)="getNewChats(chatModal)">Create new chat</button>
+<div class="button-newchat">
+  <button class="btn btn-success" (click)="getNewChats(chatModal)">Create new chat</button>
 </div>
 
-<div style="padding-left: 200px;">
+<div>
   <div id="group" *ngFor="let chat of chats">
     <div class="card">
-      <h3>{{ chat.id }}</h3>
-      <button class="btn btn-primary" [routerLink]="[chat.id!]">Join</button>
+      <div [routerLink]="[chat.id!]">Join
+        {{ chat.users }}
+      </div>
     </div>
   </div>
 </div>
 
 <ng-template #chatModal let-modal>
-  <div class='table-responsive' id='showModal'>
-    <table class='table' aria-describedby='page-heading'>
-      <thead>
-      <tr>
-        <th scope='col'>
-          Username
-        </th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor='let u of newUsersToChat' data-cy='entityTable'>
-        <td>{{ u?.username }}</td>
-        <td><button (click)="createNewChat(u.id!)">New chat</button></td>
-      </tr>
-      </tbody>
-    </table>
+  <div style="display: flex; text-align: center; font-size: 2rem; margin: 1rem;" *ngIf="newUsersToChat!.length === 0">
+    No user available for new chat
+  </div>
+  <div *ngIf="newUsersToChat!.length > 0" class="users" role="dialog">
+    <div *ngFor='let u of newUsersToChat'>
+      <div class="content">
+        <img *ngIf="u?.imageString" style="padding: 0.5rem" width="64" height="64" class="rounded-circle me-2" src="{{ u?.imageString }}">
+        <img *ngIf="!u?.imageString" style="padding: 0.5rem" width="64" height="64" class="rounded-circle me-2" src="./assets/images/default-profilepic.jpg">
+      </div>
+      <div style="margin-bottom: 1rem" class="content">
+        {{ u.username }}
+      </div>
+      <div class="buttons">
+        <button class="btn btn-success" (click)="createNewChat(u.id!)">New chat</button>
+      </div>
+    </div>
   </div>
 </ng-template>

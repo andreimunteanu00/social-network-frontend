@@ -54,11 +54,11 @@ export class MygroupComponent implements OnInit {
       animation: true,
       scrollable: true,
       centered: true,
-      size: 'xl'
+      size: 'sm'
     });
   }
 
-  approveOrRejectRequest(groupId: number, userId: number, response: boolean) {
+  approveOrRejectRequest(modal:any, groupId: number, userId: number, response: boolean) {
     this.groupService.approveOrRejectRequest(groupId, userId, response).subscribe((res: any) => {
       if (res.body.success) {
         Swal.fire({
@@ -74,5 +74,6 @@ export class MygroupComponent implements OnInit {
         })
       }
     });
+    //TODO refresh modal after accept
   }
 }

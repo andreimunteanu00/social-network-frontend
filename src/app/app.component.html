@@ -2,7 +2,10 @@
   <app-navbar style="z-index: 1"></app-navbar>
   <div style="display: inline">
     <app-sidenavbar *ngIf="checkLogin()" ></app-sidenavbar>
-    <div id="routeroutlet">
+    <div *ngIf="!checkLogin()" id="routeroutlet">
+      <router-outlet></router-outlet>
+    </div>
+    <div *ngIf="checkLogin()" id="routeroutlet1">
       <router-outlet></router-outlet>
     </div>
   </div>

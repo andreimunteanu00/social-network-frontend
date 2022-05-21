@@ -40,7 +40,7 @@ export class ChatComponent implements OnInit {
       animation: true,
       scrollable: true,
       centered: true,
-      size: 'xl'
+      size: 'sm'
     });
   }
 

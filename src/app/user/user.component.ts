@@ -2,8 +2,9 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {IUser, User} from "./user.model";
 import {UserService} from "./user.service";
 import {ActivatedRoute} from "@angular/router";
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import Swal from "sweetalert2";
+import * as dayjs from "dayjs";
 
 @Component({
   selector: 'app-user',
@@ -20,8 +21,12 @@ export class UserComponent implements OnInit {
   file: any;
   userForm = this.fb.group({
     id: [],
-    username: [],
-    email: [],
+    username: ['', Validators.required],
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
+    university: ['', Validators.required],
+    birthDate: ['', Validators.required],
+    email: ['', Validators.required],
     profilePic: []
   })
 
@@ -64,6 +69,9 @@ export class UserComponent implements OnInit {
       ...new User(),
       id: this.userForm.get(['id'])!.value,
       username: this.userForm.get(['username'])!.value,
+      firstName: this.userForm.get(['firstName'])!.value,
+      lastName: this.userForm.get(['lastName'])!.value,
+      birthDate: this.userForm.get(['birthDate'])!.value ? dayjs(this.userForm.get(['birthDate'])!.value, 'YYYY-MM-DD') : undefined,
       email: this.userForm.get(['email'])!.value,
       profilePic: this.userForm.get(['profilePic'])!.value,
     };
@@ -73,6 +81,9 @@ export class UserComponent implements OnInit {
     this.userForm.patchValue({
       id: user.id!,
       username: user.username!,
+      firstName: user.firstName!,
+      lastName: user.lastName!,
+      birthDate: user.birthDate!,
       email: user.email!,
       profilePic: user.profilePic!
     });
