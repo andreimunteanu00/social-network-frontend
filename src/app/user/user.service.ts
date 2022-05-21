@@ -50,6 +50,10 @@ export class UserService {
     return this.http.get(this.resourceUrl + "/" + id + "/createChat", { observe: "response" });
   }
 
+  getFeed(lastIndex: number) {
+    return this.http.get(this.resourceUrl + "/feed/" + lastIndex, { observe: "response" });
+  }
+
   protected convertDateFromClient(user: IUser) {
     return Object.assign({}, user, {
       birthDate: user.birthDate ? JSON.stringify(user.birthDate) : undefined,

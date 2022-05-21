@@ -1,31 +1,32 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import {Post} from "./post.model";
-import {UserService} from "../user/user.service";
-import {PostService} from "./post.service";
+import {Component, HostListener, Input, OnInit} from '@angular/core';
+import {GroupService} from "../group.service";
+import {Post} from "../../post/post.model";
+import {PostService} from "../../post/post.service";
 
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss']
+  selector: 'app-groupfeed',
+  templateUrl: './groupfeed.component.html',
+  styleUrls: ['./groupfeed.component.scss'],
 })
-export class PostComponent implements OnInit {
+export class GroupfeedComponent implements OnInit {
   posts!: Post[];
   done!: boolean;
-  busy: boolean = false;
+  busy!: boolean;
+  @Input() groupId!: number;
+
+  isShown: boolean = true;
 
   constructor(
-    protected postService: PostService,
-    protected userService: UserService
+    private groupService: GroupService,
+    private postService: PostService
   ) { }
 
   ngOnInit(): void {
-    this.posts = [];
-
-    this.userService.getFeed(-1).subscribe((res: any) => {
+    this.groupService.getGroupFeed(this.groupId, -1).subscribe((res: any) => {
       this.posts = res.body;
       this.done = this.posts.length < 10;
       this.posts.forEach(p => p.commentIsHidden = true);
-    })
+    });
   }
 
   likePost(post: Post): void {
@@ -59,7 +60,7 @@ export class PostComponent implements OnInit {
 
         let lastIndex = this.posts[this.posts.length - 1].id;
 
-        this.userService.getFeed(lastIndex).subscribe((res: any) => {
+        this.groupService.getGroupFeed(this.groupId, lastIndex).subscribe((res: any) => {
           let newPosts: Post[] = res.body;
           newPosts.forEach(p => p.commentIsHidden = true);
           this.posts = this.posts.concat(newPosts);
@@ -70,4 +71,5 @@ export class PostComponent implements OnInit {
       }
     }
   }
+
 }
