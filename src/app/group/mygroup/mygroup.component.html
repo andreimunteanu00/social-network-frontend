@@ -2,6 +2,7 @@
   <button class="btn btn-success" type="button" (click)="seePendingUsers(group!.id!, pendingUsersModal)">See pending users</button>
 </div>
 <p>mygroup works! {{group!.id}}</p>
+<app-groupfeed [groupId]="group!.id!" ></app-groupfeed>
 
 <ng-template #pendingUsersModal let-modal>
   <div style="display: flex; text-align: center; font-size: 2rem; margin: 1rem;" *ngIf="pendingUsers!.length === 0">
