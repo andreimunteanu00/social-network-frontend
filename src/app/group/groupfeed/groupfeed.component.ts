@@ -2,6 +2,8 @@ import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {GroupService} from "../group.service";
 import {Post} from "../../post/post.model";
 import {PostService} from "../../post/post.service";
+import {CommentService} from "../../comment/comment.service";
+import {HttpStatusCode} from "@angular/common/http";
 
 @Component({
   selector: 'app-groupfeed',
@@ -16,9 +18,12 @@ export class GroupfeedComponent implements OnInit {
 
   isShown: boolean = true;
 
+  commentText!: string;
+
   constructor(
     private groupService: GroupService,
-    private postService: PostService
+    private postService: PostService,
+    private commentService: CommentService
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +54,14 @@ export class GroupfeedComponent implements OnInit {
       post.likeCount--;
       post.alreadyLiked = false;
     })
+  }
+
+  postComment(post: Post): void {
+    this.commentService.commentOnPost(post, this.commentText).subscribe((res: any) => {
+      if (res.status == HttpStatusCode.Created) {
+        post.comments.push(res.body.comment);
+      }
+    });
   }
 
   @HostListener("window:scroll", [])

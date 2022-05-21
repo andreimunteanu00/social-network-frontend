@@ -28,6 +28,7 @@ import {ChatComponent} from './chat/chat.component';
 import {RoomComponent} from './chat/room/room.component';
 import {GroupfeedComponent} from './group/groupfeed/groupfeed.component';
 import {AutosizeModule} from "ngx-autosize";
+import { CommentComponent } from './comment/comment.component';
 
 //import { BackgroundimageComponent } from './backgroundimage/backgroundimage.component';
 
@@ -51,7 +52,8 @@ import {AutosizeModule} from "ngx-autosize";
     MygroupComponent,
     ChatComponent,
     RoomComponent,
-    GroupfeedComponent
+    GroupfeedComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

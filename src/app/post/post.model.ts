@@ -1,3 +1,5 @@
+import {Comment} from '../comment/comment.model';
+
 export interface IPost {
   id: number;
   title: string;
@@ -6,6 +8,7 @@ export interface IPost {
   likeCount: number;
   alreadyLiked: boolean;
   commentIsHidden: boolean;
+  comments: Comment[],
   bodyText?: string;
 }
 
@@ -18,6 +21,7 @@ export class Post implements IPost {
     public likeCount: number,
     public alreadyLiked: boolean,
     public commentIsHidden: boolean,
+    public comments: Comment[],
     public bodyText?: string,
   ) { }
 }

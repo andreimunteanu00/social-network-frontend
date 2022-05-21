@@ -14,11 +14,19 @@
       <div class="comment-div" [hidden]="post.commentIsHidden">
           <textarea class="rounded"
                     placeholder="What are your thoughts?"
-                    autosize></textarea>
-        <button class="position-absolute">
+                    autosize
+                    [(ngModel)]="commentText" ></textarea>
+        <button class="position-absolute" (click)="postComment(post)">
           <i class="fa-solid fa-paper-plane"></i>
         </button>
       </div>
+      <div id="comments-div">
+        <div id="comment" class="card m-1 p-3" *ngFor="let comment of post.comments">
+          <p> Created {{ comment.timeCreatedString }} </p>
+          <p> {{ comment.text }} </p>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

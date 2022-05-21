@@ -2,6 +2,8 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {Post} from "./post.model";
 import {UserService} from "../user/user.service";
 import {PostService} from "./post.service";
+import {CommentService} from "../comment/comment.service";
+import {HttpStatusCode} from "@angular/common/http";
 
 @Component({
   selector: 'app-post',
@@ -13,9 +15,12 @@ export class PostComponent implements OnInit {
   done!: boolean;
   busy: boolean = false;
 
+  commentText!: string;
+
   constructor(
     protected postService: PostService,
-    protected userService: UserService
+    protected userService: UserService,
+    protected commentService: CommentService
   ) { }
 
   ngOnInit(): void {
@@ -50,10 +55,19 @@ export class PostComponent implements OnInit {
     })
   }
 
+  postComment(post: Post): void {
+    this.commentService.commentOnPost(post, this.commentText).subscribe((res: any) => {
+      if (res.status == HttpStatusCode.Created) {
+        post.comments.push(res.body.comment);
+      }
+    });
+  }
+
   @HostListener("window:scroll", [])
   onScroll(): void {
     if (!this.done && !this.busy) {
       const triggerAt: number = 128;
+
       if (document.body.scrollHeight - (window.innerHeight + window.scrollY) <= triggerAt) {
         this.busy = true;
 
