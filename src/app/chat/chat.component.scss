@@ -16,3 +16,23 @@
   height: 200px;
 }
 
+.buttons {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.content {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.users {
+  margin: 1rem 0;
+}
+
+.ng-template {
+  overflow-y: scroll;
+}

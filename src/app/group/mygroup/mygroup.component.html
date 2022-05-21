@@ -4,24 +4,6 @@
 <p>mygroup works! {{group!.id}}</p>
 
 <ng-template #pendingUsersModal let-modal>
-  <!--<div class='table-responsive' id='showModal'>
-    <table class='table' aria-describedby='page-heading'>
-      <thead>
-        <tr>
-          <th scope='col'>
-            Username
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor='let p of pendingUsers' data-cy='entityTable'>
-          <td style="display: flex; justify-content: center; text-align: center">{{ p?.username }}</td>
-          <td><button class="btn btn-success" type="button" (click)="approveOrRejectRequest(group!.id!, p.id!, true)">Accept</button></td>
-          <td><button class="btn btn-danger" type="button" (click)="approveOrRejectRequest(group!.id!, p.id!, false)">Decline</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>-->
   <div style="display: flex; text-align: center; font-size: 2rem; margin: 1rem;" *ngIf="pendingUsers!.length === 0">
     No pending users
   </div>
