@@ -48,4 +48,8 @@ export class ChatComponent implements OnInit {
     this.userService.createChat(id).subscribe();
     location.reload();
   }
+
+  concatUsers(users: IUser[]) {
+    return users.map(value => value.username).join(', ');
+  }
 }

@@ -19,4 +19,8 @@ export class PostService {
   unlike(post: Post) {
     return this.http.patch(this.resourceUrl + '/' + post.id + '/unlike', { observe: 'response' });
   }
+
+  createPost(title: string, body: string, groupId: number) {
+    return this.http.post(this.resourceUrl + '/' + groupId, {title, body}, { observe: 'response' })
+  }
 }

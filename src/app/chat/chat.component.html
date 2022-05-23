@@ -6,7 +6,7 @@
   <div id="group" *ngFor="let chat of chats">
     <div class="card">
       <div [routerLink]="[chat.id!]">Join
-        {{ chat.users }}
+        {{ concatUsers(chat.users!) }}
       </div>
     </div>
   </div>

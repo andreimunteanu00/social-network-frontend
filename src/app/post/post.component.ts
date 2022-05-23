@@ -39,7 +39,7 @@ export class PostComponent implements OnInit {
     }
 
     this.postService.like(post).subscribe(() => {
-      post.likeCount++;
+      post.likeCount!++;
       post.alreadyLiked = true;
     });
   }
@@ -50,7 +50,7 @@ export class PostComponent implements OnInit {
     }
 
     this.postService.unlike(post).subscribe(() => {
-      post.likeCount--;
+      post.likeCount!--;
       post.alreadyLiked = false;
     })
   }
@@ -58,7 +58,7 @@ export class PostComponent implements OnInit {
   postComment(post: Post): void {
     this.commentService.commentOnPost(post, this.commentText).subscribe((res: any) => {
       if (res.status == HttpStatusCode.Created) {
-        post.comments.push(res.body.comment);
+        post.comments!.push(res.body.comment);
       }
     });
   }
@@ -73,7 +73,7 @@ export class PostComponent implements OnInit {
 
         let lastIndex = this.posts[this.posts.length - 1].id;
 
-        this.userService.getFeed(lastIndex).subscribe((res: any) => {
+        this.userService.getFeed(lastIndex!).subscribe((res: any) => {
           let newPosts: Post[] = res.body;
           newPosts.forEach(p => p.commentIsHidden = true);
           this.posts = this.posts.concat(newPosts);
