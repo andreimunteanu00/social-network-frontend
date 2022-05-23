@@ -3,7 +3,7 @@ import {UserService} from "../user/user.service";
 import {IChat} from "./chat.model";
 import {IUser} from "../user/user.model";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-chat',
