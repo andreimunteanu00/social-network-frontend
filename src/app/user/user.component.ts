@@ -74,6 +74,7 @@ export class UserComponent implements OnInit {
       birthDate: this.userForm.get(['birthDate'])!.value ? dayjs(this.userForm.get(['birthDate'])!.value, 'YYYY-MM-DD') : undefined,
       email: this.userForm.get(['email'])!.value,
       profilePic: this.userForm.get(['profilePic'])!.value,
+      university: this.userForm.get(['university'])!.value
     };
   }
 
@@ -85,7 +86,7 @@ export class UserComponent implements OnInit {
       lastName: user.lastName!,
       birthDate: user.birthDate!,
       email: user.email!,
-      profilePic: user.profilePic!
+      university: user.university!
     });
   }
 
