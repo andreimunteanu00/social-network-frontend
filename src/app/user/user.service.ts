@@ -62,7 +62,7 @@ export class UserService {
 
   protected convertDateFromServer(res: any) {
     if (res.body) {
-      res.body.birthDate = res.body.birthDate ? dayjs(res.body.birthDate).format('YYYY-DD-MM') : undefined;
+      res.body.birthDate = res.body.birthDate ? dayjs(res.body.birthDate).format('YYYY-MM-DD') : undefined;
     }
     return res;
   }

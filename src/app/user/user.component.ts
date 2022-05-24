@@ -86,7 +86,8 @@ export class UserComponent implements OnInit {
       lastName: user.lastName!,
       birthDate: user.birthDate!,
       email: user.email!,
-      university: user.university!
+      university: user.university!,
+      profilePic: user.profilePic!
     });
   }
 
