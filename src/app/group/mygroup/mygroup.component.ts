@@ -8,9 +8,6 @@ import {IUser} from "../../user/user.model";
 import {UserService} from "../../user/user.service";
 import {ActivatedRoute, ActivatedRouteSnapshot} from "@angular/router";
 import Swal from "sweetalert2";
-import {FormBuilder} from "@angular/forms";
-import {Post} from "../../post/post.model";
-import {PostService} from "../../post/post.service";
 
 @Component({
   selector: 'app-mygroup',
@@ -22,10 +19,6 @@ export class MygroupComponent implements OnInit {
   group: IGroup | undefined;
   pendingUsers: IUser[] | undefined;
   moderator: boolean | undefined;
-  postForm = this.fb.group({
-    title: [],
-    bodyText: []
-  })
 
   constructor(
     protected groupService: GroupService,
@@ -33,9 +26,7 @@ export class MygroupComponent implements OnInit {
     protected jwtHelper: JwtHelperService,
     public authService: AuthService,
     protected modalService: NgbModal,
-    protected route: ActivatedRoute,
-    protected fb: FormBuilder,
-    protected postService: PostService
+    protected route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -84,24 +75,5 @@ export class MygroupComponent implements OnInit {
       }
     });
     //TODO refresh modal after accept
-  }
-
-  openModalForPost(modalContent: any): void {
-    this.modalService.open(modalContent, {
-      animation: true,
-      scrollable: true,
-      centered: true,
-      size: 'xl'
-    });
-  }
-
-  createPost(groupId: number, modal: any) {
-    this.openModalForPost(modal)
-  }
-
-  post(groupId: number) {
-    const title = this.postForm.get(['title'])?.value;
-    const bodyText = this.postForm.get(['bodyText'])?.value;
-    this.postService.createPost(title, bodyText, groupId).subscribe();
   }
 }

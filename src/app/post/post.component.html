@@ -1,4 +1,24 @@
-<div class="mt-2 mb-5">
+<div>
+  <button class="d-inline border-1 rounded-circle bg-light ms-3 justify-content-center align-items-center"
+          style="width: 3.5rem; height: 3.5rem"
+          (click)="createStoryPopUp(newStoryModal)">
+
+      <i class="fa-solid fa-plus"></i>
+  </button>
+  <button id="story" class="d-inline border-0"
+       *ngFor="let story of stories"
+       (click)="getStory(storyModal, story)">
+    <div style="width: 3.5rem; height: 3.5rem;"
+         class="rounded-circle bg-primary ms-3 d-flex justify-content-center align-items-center">
+      <img *ngIf="!story.userProfilePhoto" width="48rem" height="48rem" class="rounded-circle d-inline-block" src="./assets/images/default-profilepic.jpg">
+      <img *ngIf="story.userProfilePhoto" width="48rem" height="48rem" class="rounded-circle" [src]=story.userProfilePhoto>
+    </div>
+  </button>
+</div>
+
+<hr/>
+
+<div class="mt-2 mb-5 ms-2">
   <div id="post" *ngFor="let post of posts">
     <div class="card mb-1 p-3" >
       <h3> {{ post.title }} </h3>
@@ -30,3 +50,28 @@
     </div>
   </div>
 </div>
+
+<ng-template #storyModal>
+  <div class="">
+    <img width="300rem" height="300rem" [src]=modalImage.media>
+  </div>
+</ng-template>
+
+<ng-template #newStoryModal>
+  <div class="rounded m-3">
+      <div class="form-group">
+        <label for="storyMedia"> Add media&nbsp;</label>
+        <input formControlName="storyMedia" type="file" id="storyMedia" (change)="onChange($event)" />
+      </div>
+  </div>
+
+  <div class="m-3 rounded border-1 bg-light d-flex justify-content-center">
+    <img *ngIf="file" style="width: 200px; height: 300px; object-fit: contain" [src]=this.file >
+  </div>
+
+  <button *ngIf="file"
+          class="btn-primary btn"
+          (click)="createStory()">
+    Submit
+  </button>
+</ng-template>

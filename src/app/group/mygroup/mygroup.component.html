@@ -1,13 +1,6 @@
-<div style="display: inline">
-  <div *ngIf="moderator" class="button-pending">
-    <button class="btn btn-success" type="button" (click)="createPost(group!.id!, createPostModal)">Create post</button>
-    <button style="margin-left: 0.4rem" class="btn btn-success" type="button" (click)="seePendingUsers(group!.id!, pendingUsersModal)">See pending users</button>
-  </div>
-  <div *ngIf="!moderator" class="button-pending">
-    <button class="btn btn-success" type="button" (click)="createPost(group!.id!, createPostModal)">Create post</button>
-  </div>
+<div *ngIf="moderator" class="button-pending">
+  <button class="btn btn-success" type="button" (click)="seePendingUsers(group!.id!, pendingUsersModal)">See pending users</button>
 </div>
-
 <p>mygroup works! {{group!.id}}</p>
 <app-groupfeed [groupId]="group!.id!" ></app-groupfeed>
 
@@ -29,18 +22,4 @@
       </div>
     </div>
   </div>
-</ng-template>
-
-<ng-template #createPostModal let-modal>
-  <form [formGroup]="postForm">
-    <div class="mb-3">
-      <label class="medium mb-1" for="titlePost">Title</label>
-      <input formControlName="title" class="form-control" id="titlePost" type="text" placeholder="Enter your username">
-    </div>
-    <div class="mb-3">
-      <label class="medium mb-1" for="textPost">Title</label>
-      <textarea formControlName="bodyText" class="form-control" id="textPost" type="text" placeholder="Enter your username"></textarea>
-    </div>
-    <button class="btn btn-primary" (click)="post(group!.id!)">Post</button>
-  </form>
 </ng-template>

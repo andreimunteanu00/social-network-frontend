@@ -56,9 +56,6 @@ export class RoomComponent implements OnInit, AfterViewChecked {
   }
 
   sendMessage(): void {
-    if (this.message?.length === 0) {
-      return;
-    }
     this.webSocketService.sendMessage({
       message: this.message,
       sender: this.username,
