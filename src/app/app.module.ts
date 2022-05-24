@@ -29,6 +29,7 @@ import {RoomComponent} from './chat/room/room.component';
 import {GroupfeedComponent} from './group/groupfeed/groupfeed.component';
 import {AutosizeModule} from "ngx-autosize";
 import { CommentComponent } from './comment/comment.component';
+import {NgxDropzoneComponent, NgxDropzoneModule} from "ngx-dropzone";
 
 //import { BackgroundimageComponent } from './backgroundimage/backgroundimage.component';
 
@@ -67,7 +68,8 @@ import { CommentComponent } from './comment/comment.component';
     WavesModule,
     ImageCropperModule,
     FormsModule,
-    AutosizeModule
+    AutosizeModule,
+    NgxDropzoneModule
   ],
   providers: [
     AuthService,

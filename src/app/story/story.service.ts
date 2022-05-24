@@ -19,4 +19,8 @@ export class StoryService {
   getStoryMedia(story: Story) {
     return this.http.get(this.resourceUrl + '/' + story.id + '/media', { observe: 'response' });
   }
+
+  createStory(file: string) {
+    return this.http.post(this.resourceUrl, { image: file }, { observe: 'response' });
+  }
 }
