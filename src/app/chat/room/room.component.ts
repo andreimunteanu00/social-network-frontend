@@ -74,7 +74,7 @@ export class RoomComponent implements OnInit, AfterViewChecked {
       const message = new Message();
       message.message = data.message;
       message.chat = res.body;
-      message.sender = this.username;
+      message.sender = data.sender;
       this.chatService.save(message).subscribe();
     });
   }

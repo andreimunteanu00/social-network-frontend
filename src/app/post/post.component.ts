@@ -1,5 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {Post} from "./post.model";
+import {IPost, Post} from "./post.model";
 import {UserService} from "../user/user.service";
 import {PostService} from "./post.service";
 import {CommentService} from "../comment/comment.service";
